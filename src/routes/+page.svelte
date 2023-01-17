@@ -18,7 +18,7 @@
         />
     </label>
     <label>
-        Locations
+        Locations (each line is a location)
         <textarea
             name="locations"
             value={form?.data?.locations.toString() ?? ""}
