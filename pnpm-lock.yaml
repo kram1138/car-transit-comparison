@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@googlemaps/google-maps-services-js': ^3.3.26
   '@sveltejs/adapter-auto': ^1.0.0
+  '@sveltejs/adapter-netlify': ^1.0.0-next.88
   '@sveltejs/kit': ^1.0.0
   svelte: ^3.54.0
   svelte-check: ^3.0.1
@@ -17,6 +18,7 @@ dependencies:
 
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.1_@sveltejs+kit@1.1.1
+  '@sveltejs/adapter-netlify': 1.0.0-next.88_@sveltejs+kit@1.1.1
   '@sveltejs/kit': 1.1.1_svelte@3.55.1+vite@4.0.4
   svelte: 3.55.1
   svelte-check: 3.0.2_svelte@3.55.1
@@ -221,6 +223,10 @@ packages:
       crypto-js: 4.1.1
     dev: false
 
+  /@iarna/toml/2.2.5:
+    resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
+    dev: true
+
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
     engines: {node: '>=6.0.0'}
@@ -269,6 +275,17 @@ packages:
     dependencies:
       '@sveltejs/kit': 1.1.1_svelte@3.55.1+vite@4.0.4
       import-meta-resolve: 2.2.1
+    dev: true
+
+  /@sveltejs/adapter-netlify/1.0.0-next.88_@sveltejs+kit@1.1.1:
+    resolution: {integrity: sha512-vUuG1++iQJvNPR6E9S9eYSRRudQnrDHEyLzV9c4dWQjQ4u12papwag4EAqTSxXxWiE4d1MEtH0p0p25W55uKNQ==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.0.0-next.587
+    dependencies:
+      '@iarna/toml': 2.2.5
+      '@sveltejs/kit': 1.1.1_svelte@3.55.1+vite@4.0.4
+      esbuild: 0.16.17
+      set-cookie-parser: 2.5.1
     dev: true
 
   /@sveltejs/kit/1.1.1_svelte@3.55.1+vite@4.0.4:
