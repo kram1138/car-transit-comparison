@@ -26,13 +26,42 @@ async function getData(params: {
       departure_time: time
     }
   });
+  const cycleResponse = await client.distancematrix({
+    params: {
+      destinations: params.locations.split("\n"),
+      origins: params.locations.split("\n"),
+      key: params.apiKey,
+      mode: TravelMode.bicycling,
+      departure_time: time
+    }
+  });
   const transitInfo = toInfo(transitResponse)
   const carInfo = toInfo(carResponse);
+  const cycleInfo = toInfo(cycleResponse);
   const table = {
-    headers: ["Origin address", "Destination address", "Distance by car (m)", "Time by car (s)", "Distance by transit (m)", "Time by transit (s)"],
+    headers: [
+      "Origin address",
+      "Destination address",
+      "Distance by car (m)",
+      "Time by car (s)",
+      "Distance by transit (m)",
+      "Time by transit (s)",
+      "Distance by bicycle (m)",
+      "Time by bicycle (s)",
+    ],
     rows: carInfo.map((car, i) => {
       const transit = transitInfo[i];
-      return [car?.o, car?.d, car?.dist.value, car?.time.value, transit?.dist.value, transit?.time.value,]
+      const cycle = cycleInfo[i];
+      return [
+        car?.o,
+        car?.d,
+        car?.dist.value,
+        car?.time.value,
+        transit?.dist.value,
+        transit?.time.value,
+        cycle?.dist.value,
+        cycle?.time.value,
+      ]
     }).filter(([origin, dest, _, __, ___, ____]) => origin !== dest)
   }
   const carDistanceTotal = carInfo.reduce((sum, current) => sum + (current?.dist.value ?? 0), 0);
