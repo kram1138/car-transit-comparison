@@ -27,8 +27,10 @@
     <button>Send</button>
 </form>
 {#if form?.success && form.ratios}
-<p>The ratio of car distance / transit distance: {form.ratios.distance}</p>
-<p>The ratio of car travel time / transit travel time: {form.ratios.time}</p>
+<p>The ratio of car distance / transit distance: {form.ratios.transitDistance}</p>
+<p>The ratio of car travel time / transit travel time: {form.ratios.transitTime}</p>
+<p>The ratio of car distance / bicycle distance: {form.ratios.bicycleDistance}</p>
+<p>The ratio of car travel time / bicycle travel time: {form.ratios.bicycleTime}</p>
 {/if}
 {#if form?.success && form.table}
     <table>

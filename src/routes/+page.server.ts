@@ -66,11 +66,15 @@ async function getData(params: {
   }
   const carDistanceTotal = carInfo.reduce((sum, current) => sum + (current?.dist.value ?? 0), 0);
   const transitDistanceTotal = transitInfo.reduce((sum, current) => sum + (current?.dist.value ?? 0), 0);
+  const bicycleDistanceTotal = cycleInfo.reduce((sum, current) => sum + (current?.dist.value ?? 0), 0);
   const carTimeTotal = carInfo.reduce((sum, current) => sum + (current?.time.value ?? 0), 0);
   const transitTimeTotal = transitInfo.reduce((sum, current) => sum + (current?.time.value ?? 0), 0);
+  const bicycleTimeTotal = cycleInfo.reduce((sum, current) => sum + (current?.time.value ?? 0), 0);
   const ratios = {
-    distance: carDistanceTotal / transitDistanceTotal,
-    time: carTimeTotal / transitTimeTotal
+    transitDistance: carDistanceTotal / transitDistanceTotal,
+    transitTime: carTimeTotal / transitTimeTotal,
+    bicycleDistance: carDistanceTotal / bicycleDistanceTotal,
+    bicycleTime: carTimeTotal / bicycleTimeTotal,
   }
 
   return { table, ratios }
