@@ -29,7 +29,7 @@ async function getData(params: {
   const transitInfo = toInfo(transitResponse)
   const carInfo = toInfo(carResponse);
   const table = {
-    headers: ["Origin address", "Destination address", "Distance by car (m)", "Time by car (s)", "Distance by bus (m)", "Time by bus (s)"],
+    headers: ["Origin address", "Destination address", "Distance by car (m)", "Time by car (s)", "Distance by transit (m)", "Time by transit (s)"],
     rows: carInfo.map((car, i) => {
       const transit = transitInfo[i];
       return [car?.o, car?.d, car?.dist.value, car?.time.value, transit?.dist.value, transit?.time.value,]
